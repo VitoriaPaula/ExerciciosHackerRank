@@ -9,62 +9,20 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class Exercicios {
-	public static void main(String[] args) {
-		HashMap<Integer, Integer> exemplo = calculateNotas(11257);
-		SortedSet<Integer> keys = new TreeSet<>(exemplo.keySet());
-		for (Integer key : keys) {
-			System.out.println(exemplo.get(key) + " nota(s) de R$ " + key + ".00");
-		}
-	}
-
-	// Exercicio de dividir um valor X em notas de 100, 50, 20, 10, 5, 2 e 1
-	public static HashMap<Integer, Integer> calculateNotas(Integer valorTotal) {
-		HashMap<Integer, Integer> retorno = new HashMap<Integer, Integer>();
-		retorno.put(100, 0);
-		retorno.put(50, 0);
-		retorno.put(20, 0);
-		retorno.put(10, 0);
-		retorno.put(5, 0);
-		retorno.put(2, 0);
-		retorno.put(1, 0);
-
-		int valor = 0;
-		if (valorTotal >= 100) {
-			valor = valorTotal / 100;
-			retorno.put(100, valor);
-			valorTotal = valorTotal - (100 * (valor));
-		}
-		if (valorTotal >= 50) {
-			valor = valorTotal / 50;
-			retorno.put(50, valor);
-			valorTotal = valorTotal - (50 * (valor));
-		}
-		if (valorTotal >= 20) {
-			valor = valorTotal / 20;
-			retorno.put(20, valor);
-			valorTotal = valorTotal - (20 * (valor));
-		}
-		if (valorTotal >= 10) {
-			valor = valorTotal / 10;
-			retorno.put(10, valor);
-			valorTotal = valorTotal - (10 * (valor));
-		}
-		if (valorTotal >= 5) {
-			valor = valorTotal / 5;
-			retorno.put(5, valor);
-			valorTotal = valorTotal - (5 * (valor));
-		}
-		if (valorTotal >= 2) {
-			valor = valorTotal / 2;
-			retorno.put(2, valor);
-			valorTotal = valorTotal - (2 * (valor));
-		}
-		if (valorTotal >= 1) {
-			retorno.put(1, valorTotal);
-			valorTotal = valorTotal - (valorTotal);
-		}
 	
-		return retorno;
+	// Exercicio de dividir um valor X em notas de 100, 50, 20, 10, 5, 2 e 1
+	public static void main(String[] args) {
+		try(Scanner scanner = new Scanner(System.in)) {
+			Integer value = scanner.nextInt();
+			
+			Integer[] notes = {100, 50, 20, 10, 5, 2, 1};
+			
+			System.out.println(value);
+			for (int i = 0; i < notes.length; i++) {
+				System.out.println(value/notes[i] + " nota(s) de R$ " + notes[i] + ",00");
+				value = value % notes[i];
+			}
+		}
 	}
 
 	public static List<List<Integer>> findRestaurants(List<List<Integer>> allLocations, int numRestaurants) {
