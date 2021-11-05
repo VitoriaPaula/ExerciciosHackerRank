@@ -3,18 +3,32 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.SortedSet;
 import java.util.TreeMap;
-import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class Exercicios {
 	public static void main(String[] args) {
-		HashMap<Integer, Integer> exemplo = calculateNotas(11257);
-		SortedSet<Integer> keys = new TreeSet<>(exemplo.keySet());
-		for (Integer key : keys) {
-			System.out.println(exemplo.get(key) + " nota(s) de R$ " + key + ".00");
+//		HashMap<Integer, Integer> exemplo = calculateNotas(11257);
+//		SortedSet<Integer> keys = new TreeSet<>(exemplo.keySet());
+//		for (Integer key : keys) {
+//			System.out.println(exemplo.get(key) + " nota(s) de R$ " + key + ".00");
+//		}
+		
+		fibonacciPosition(6);
+	}
+	
+	//Exercicio Fibonacci, passa uma posição X 
+	//e retorna qual o numero Fibonacci que está nessa posição
+	public static void fibonacciPosition(Integer posicao) {
+		long a = 1;
+		long b, valorFinal = 0;
+		for(int i=0; i<posicao; i++) {//0 1 1 2 3 5 8
+			b = a;
+			a = valorFinal;
+			valorFinal = b + a;
 		}
+		System.out.println("Fib(" + posicao + ") = " + valorFinal);
+		
 	}
 
 	// Exercicio de dividir um valor X em notas de 100, 50, 20, 10, 5, 2 e 1
